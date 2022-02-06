@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { Todo } from './modal/Todo'
 import { Description } from '@material-ui/icons'
+import { AddToDriveOutlined } from '@mui/icons-material'
 
 interface TodoState {
   todos: Todo[]
@@ -15,6 +16,7 @@ interface TodoState {
 export const useStore = create<TodoState>((set) => ({
   // initial state
   todos: [],
+
   // methods for manipulating state
   addTodo: (description: string) => {
     set((state) => ({

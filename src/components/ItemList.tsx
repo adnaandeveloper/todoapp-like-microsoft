@@ -63,7 +63,6 @@ const ItemList = () => {
             <div style={{ marginTop: '20px' }}>
               <Item />
             </div>
-            <Item />
           </Grid>
         </Grid>
       ) : (
