@@ -55,7 +55,7 @@ const Item = () => {
               p: 2,
               border: 1,
               borderColor: '#b9bdba',
-              backgroundColor: '#b9bdba',
+              backgroundColor: '#faf8f7',
               '&:hover': {
                 color: 'red',
                 backgroundColor: 'white',

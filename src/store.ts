@@ -8,6 +8,7 @@ import { AddToDriveOutlined } from '@mui/icons-material'
 
 interface TodoState {
   todos: Todo[]
+
   addTodo: (description: string) => void
   removeTodo: (id: string) => void
   toggleCompletedState: (id: string) => void
@@ -35,6 +36,7 @@ export const useStore = create<TodoState>((set) => ({
       todos: state.todos.filter((todo) => todo.id !== id),
     }))
   },
+
   toggleCompletedState: (id) => {
     set((state) => ({
       todos: state.todos.map((todo) =>
