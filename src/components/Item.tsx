@@ -15,12 +15,16 @@ import { useStore } from '../store'
 import Checkbox from '@material-ui/core/Checkbox'
 
 const Item = () => {
+  console.log('plus im from item component yees im her can you see mee now?')
   const { addTodo, removeTodo, toggleCompletedState, todos } = useStore()
   const [todoText, setTodoText] = useState('')
   const [plus, setPlus] = useState(false)
+  console.log({ plus })
   const handleChange = (e: any, value: string) => {
-    setTodoText(value)
-    if (e.key === 'Enter' || e.keyCode === 13) {
+    if (value) {
+      setTodoText(value)
+    }
+    if (e.key === 'Enter') {
       setPlus((prevPlus) => !prevPlus)
     }
   }
@@ -42,8 +46,11 @@ const Item = () => {
               onKeyUp={(e) => {
                 if (e.key === 'Enter' || e.keyCode === 13) {
                   // Do something
-                  addTodo(todoText)
+                  if (todoText) {
+                    addTodo(todoText)
+                  }
                   setTodoText('')
+                  setPlus((prevPlus) => !prevPlus)
                 }
               }}
             />

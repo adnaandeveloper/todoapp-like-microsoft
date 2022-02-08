@@ -11,8 +11,9 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday'
 import PeopleIcon from '@mui/icons-material/People'
 import AttachFileIcon from '@mui/icons-material/AttachFile'
 import CheckIcon from '@mui/icons-material/Check'
+import Header from './Header'
 
-const ItemList = () => {
+const WrapperModal = (props: any) => {
   const { isNotFalse, isFalse, toggleToFalse, toggleToTrue } = useCustomToggle()
   const [open, setOpen] = useState(false)
 
@@ -25,8 +26,9 @@ const ItemList = () => {
 
   return (
     <>
+      <Header />
       <div style={{ marginLeft: isFalse ? '21%' : '3px' }}>
-        <Item />
+        {props.children}
       </div>
       <Drawer
         open={isFalse}
@@ -77,4 +79,4 @@ const ItemList = () => {
   )
 }
 
-export default ItemList
+export default WrapperModal

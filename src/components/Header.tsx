@@ -12,7 +12,7 @@ const Header = () => {
       <CssBaseline />
       <AppBar
         position='relative'
-        style={{ marginBottom: '3px', height: '60px' }}
+        style={{ marginBottom: '3px', height: '60px', margin: 0 }}
       >
         <Toolbar>
           <Grid container spacing={3}>

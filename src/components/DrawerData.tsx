@@ -9,40 +9,61 @@ import PersonOutlineIcon from '@material-ui/icons/PersonOutline'
 import EmojiFlagsIcon from '@material-ui/icons/EmojiFlags'
 import HomeIcon from '@material-ui/icons/Home'
 import useCustomToggle from '../myToggleStore'
+import { Link } from 'react-router-dom'
 
 const DrawerData = () => {
-  const { isNotFalse, isFalse, toggleToTrue, toggleToFalse } = useCustomToggle()
+  const { toggleToTrue } = useCustomToggle()
   return (
     <>
       <Grid container spacing={1} style={{ display: 'block' }}>
         <MenuIcon style={{ margin: '10px' }} onClick={toggleToTrue} />
 
         <Grid item>
-          <Typography variant='h6'>
-            <WbSunnyIcon />
-            Min Opgaver
+          <Typography
+            variant='button'
+            sx={{
+              ':hover': {
+                backgroundColor: '#fcfcfa',
+              },
+            }}
+          >
+            <Link to='/'>
+              <WbSunnyIcon />
+              Mine Opgaver{' '}
+            </Link>
           </Typography>
         </Grid>
 
         <Grid item>
-          <StarBorderIcon />
-          Vigtigt
+          <Link to='Vigtigt'>
+            {' '}
+            <StarBorderIcon />
+            Vigtigt{' '}
+          </Link>
         </Grid>
         <Grid item>
-          <DateRangeIcon />
-          Planlagt
+          <Link to='Planlagt'>
+            <DateRangeIcon />
+            Planlagt
+          </Link>
         </Grid>
         <Grid item>
-          <PersonOutlineIcon />
-          Tildelt mig
+          <Link to='Tildelt Mig'>
+            <PersonOutlineIcon />
+            Tildelt mig
+          </Link>
         </Grid>
         <Grid item>
-          <EmojiFlagsIcon />
-          Mail markeret med flag
+          <Link to=' Mail Markeret Med Flag'>
+            <EmojiFlagsIcon />
+            Mail markeret med flag
+          </Link>
         </Grid>
         <Grid item>
-          <HomeIcon />
-          Opgaver
+          <Link to='Opgaver'>
+            <HomeIcon />
+            Opgaver
+          </Link>
         </Grid>
       </Grid>
     </>
