@@ -13,6 +13,7 @@ import { Box } from '@mui/system'
 import React, { useState } from 'react'
 import { useStore } from '../store'
 import Checkbox from '@material-ui/core/Checkbox'
+import InputFielAdd from './InputFielAdd'
 
 const Item = () => {
   console.log('plus im from item component yees im her can you see mee now?')
@@ -31,62 +32,7 @@ const Item = () => {
 
   return (
     <>
-      <div style={{ width: '100%' }}>
-        {plus ? (
-          <Box style={{ width: '100%' }}>
-            <TextField
-              id='outlined-name'
-              label='Tilføj en opgave'
-              value={todoText}
-              style={{ width: '100%' }}
-              onChange={(e) => {
-                e.preventDefault()
-                handleChange(e, e.target.value)
-              }}
-              onKeyUp={(e) => {
-                if (e.key === 'Enter' || e.keyCode === 13) {
-                  // Do something
-                  if (todoText) {
-                    addTodo(todoText)
-                  }
-                  setTodoText('')
-                  setPlus((prevPlus) => !prevPlus)
-                }
-              }}
-            />
-          </Box>
-        ) : (
-          <Box
-            sx={{
-              width: '100%',
-              p: 2,
-              border: 1,
-              borderColor: '#b9bdba',
-              backgroundColor: '#faf8f7',
-              '&:hover': {
-                color: 'red',
-                backgroundColor: 'white',
-              },
-            }}
-          >
-            <Typography variant='h6' color='primary'>
-              {' '}
-              <AddIcon
-                sx={[
-                  {
-                    '&:hover': {
-                      color: 'red',
-                      fontSize: 26,
-                    },
-                  },
-                ]}
-                onClick={() => setPlus(true)}
-              />{' '}
-              Tilføj en opgave
-            </Typography>
-          </Box>
-        )}
-      </div>
+      <InputFielAdd />
       <div style={{ display: 'inline-grid' }}>
         <FormGroup>
           {todos.map((todo) => (
