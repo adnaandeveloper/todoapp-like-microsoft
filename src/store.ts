@@ -1,49 +1,49 @@
-import create from 'zustand'
+import create from 'zustand';
 
-import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from 'uuid';
 
-import { Todo } from './modal/Todo'
-import { Description } from '@material-ui/icons'
-import { AddToDriveOutlined } from '@mui/icons-material'
+import { Todo } from './modal/Todo';
+import { Description } from '@mui/icons-material';
+import { AddToDriveOutlined } from '@mui/icons-material';
 
 interface TodoState {
-  todos: Todo[]
+    todos: Todo[];
 
-  addTodo: (description: string) => void
-  removeTodo: (id: string) => void
-  toggleCompletedState: (id: string) => void
+    addTodo: (description: string) => void;
+    removeTodo: (id: string) => void;
+    toggleCompletedState: (id: string) => void;
 }
 
 export const useStore = create<TodoState>((set) => ({
-  // initial state
-  todos: [],
+    // initial state
+    todos: [],
 
-  // methods for manipulating state
-  addTodo: (description: string) => {
-    set((state) => ({
-      todos: [
-        ...state.todos,
-        {
-          id: uuidv4(),
-          description,
-          completed: false,
-        } as Todo,
-      ],
-    }))
-  },
-  removeTodo: (id) => {
-    set((state) => ({
-      todos: state.todos.filter((todo) => todo.id !== id),
-    }))
-  },
+    // methods for manipulating state
+    addTodo: (description: string) => {
+        set((state) => ({
+            todos: [
+                ...state.todos,
+                {
+                    id: uuidv4(),
+                    description,
+                    completed: false,
+                } as Todo,
+            ],
+        }));
+    },
+    removeTodo: (id) => {
+        set((state) => ({
+            todos: state.todos.filter((todo) => todo.id !== id),
+        }));
+    },
 
-  toggleCompletedState: (id) => {
-    set((state) => ({
-      todos: state.todos.map((todo) =>
-        todo.id === id
-          ? ({ ...todo, completed: !todo.completed } as Todo)
-          : todo
-      ),
-    }))
-  },
-}))
+    toggleCompletedState: (id) => {
+        set((state) => ({
+            todos: state.todos.map((todo) =>
+                todo.id === id
+                    ? ({ ...todo, completed: !todo.completed } as Todo)
+                    : todo
+            ),
+        }));
+    },
+}));
