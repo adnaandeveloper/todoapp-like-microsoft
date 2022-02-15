@@ -1,3 +1,52 @@
 body {
-    overflow-x: hidden;
+  overflow-x: hidden;
+}
+
+.SearchGrid {
+  max-width: 400px;
+}
+
+.container {
+  background-image: url(./images/papir.jpg);
+}
+@media (max-width: 876px) {
+  .SearchGrid {
+    max-width: 10px !important;
+    width: 10px;
+  }
+}
+
+@media (max-width: 1428px) {
+  .addButton {
+    margin-left: 242px !important;
+    margin-top: 11px !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .addButton {
+    margin-left: 220px !important;
+    margin-top: 11px !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  .addButton {
+    margin-left: 200px !important;
+    margin-top: 11px !important;
+  }
+}
+
+@media (max-width: 1060px) {
+  .addButton {
+    margin-left: 146px !important;
+    margin-top: 11px !important;
+  }
+}
+
+@media (max-width: 1060px) {
+  .addButton {
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+  }
 }

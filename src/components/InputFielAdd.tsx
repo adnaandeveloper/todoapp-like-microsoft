@@ -1,8 +1,14 @@
-import { TextField, Typography } from '@mui/material'
+import { Button, Grid, makeStyles, TextField, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import React, { useState } from 'react'
 import { useStore } from '../store'
 import AddIcon from '@mui/icons-material/Add'
+import Radio from '@mui/material/Radio'
+import DateRangeTwoToneIcon from '@mui/icons-material/DateRangeTwoTone'
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday'
+
+import '../App.css'
 
 const InputFielAdd = () => {
   const { addTodo, removeTodo, toggleCompletedState, todos } = useStore()
@@ -19,14 +25,47 @@ const InputFielAdd = () => {
   }
   return (
     <div>
-      <div style={{ width: '100%' }}>
+      <div>
         {plus ? (
-          <Box style={{ width: '100%' }}>
+          <Box
+            sx={{
+              backgroundColor: '#f5f5f5',
+              height: '140px',
+              p: 0,
+              borderRadius: 2,
+              display: 'flex',
+              flexDirection: 'column',
+              margin: '0 8px',
+            }}
+          >
+            <Grid position={'absolute'}>
+              {' '}
+              <Radio
+                disabled
+                sx={{
+                  marginLeft: ' 2px',
+
+                  '&:hover': { backgroundColor: '#f5f5f5' },
+                }}
+              />
+            </Grid>
             <TextField
-              id='outlined-name'
-              label='Tilføj en opgave'
+              variant='standard'
+              sx={{
+                paddingRight: '-66px',
+                marginTop: '9px',
+                marginLeft: ' 43px',
+                marginRight: '17px',
+                borderColor: '#f5f5f5',
+                backgroundColor: '#fafafa',
+                borderRadius: 2,
+                height: '44px',
+                display: 'grid',
+              }}
+              placeholder='Tilføj en opgave'
               value={todoText}
-              style={{ width: '100%' }}
+              color='primary'
+              focused
               onChange={(e) => {
                 e.preventDefault()
                 handleChange(e, e.target.value)
@@ -42,34 +81,78 @@ const InputFielAdd = () => {
                 }
               }}
             />
+            <Grid sx={{ display: 'flex' }}>
+              <Grid
+                item
+                xs={3}
+                style={{ marginLeft: '39px', marginTop: '11px' }}
+              >
+                <Grid style={{ display: 'flex' }}>
+                  <div>
+                    <Button
+                      sx={{
+                        ':& hover': {
+                          p: 5,
+                        },
+                      }}
+                    >
+                      {' '}
+                      <DateRangeTwoToneIcon sx={{ fontSize: '15px' }} />{' '}
+                    </Button>
+                  </div>
+                  <div>
+                    <Button>
+                      {' '}
+                      <NotificationsNoneIcon sx={{ fontSize: '15px' }} />{' '}
+                    </Button>
+                  </div>
+                  <Grid>
+                    <Button>
+                      {' '}
+                      <CalendarTodayIcon sx={{ fontSize: '15px' }} />{' '}
+                    </Button>
+                  </Grid>
+                </Grid>
+              </Grid>
+
+              <Grid item xs={5}></Grid>
+
+              <Grid item xs={3} position={'relative'}>
+                <Typography>
+                  <Button
+                    className='addButton'
+                    sx={{
+                      fontSize: '12px',
+                      color: '#c2c2c2',
+                      '&:hover': { backgroundColor: '#f5f5f5' },
+                      position: 'absolute',
+                    }}
+                  >
+                    Tilføj
+                  </Button>
+                </Typography>
+              </Grid>
+            </Grid>
           </Box>
         ) : (
           <Box
             sx={{
+              borderRadius: 2,
               width: '100%',
+
               p: 2,
-              border: 1,
+              height: '54px',
               borderColor: '#b9bdba',
-              backgroundColor: '#faf8f7',
-              '&:hover': {
-                color: 'red',
-                backgroundColor: 'white',
-              },
+              backgroundColor: '#f5f5f5',
             }}
           >
-            <Typography variant='h6' color='primary'>
-              {' '}
+            <Typography
+              sx={{ fontSize: '1rem', color: '#838388', display: 'flex' }}
+            >
               <AddIcon
-                sx={[
-                  {
-                    '&:hover': {
-                      color: 'red',
-                      fontSize: 26,
-                    },
-                  },
-                ]}
+                sx={{ color: '#8a95a1', width: '24px' }}
                 onClick={() => setPlus(true)}
-              />{' '}
+              />
               Tilføj en opgave
             </Typography>
           </Box>
