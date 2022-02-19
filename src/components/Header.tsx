@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ViewComfyIcon from '@mui/icons-material/ViewComfy'
 import '../App.css'
 
@@ -31,6 +31,7 @@ import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 
 import MenuIcon from '@mui/icons-material/Menu'
+import useCustomToggle from '../myToggleStore'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -76,6 +77,85 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }))
 
 const Header = () => {
+  const { open, toggleOpen } = useCustomToggle()
+
+  const [isTouchSettingIcon, setIsTouchSettingIcon] = useState(false)
+  const [isTouchQuestionMarkIcon, setIsTouchQuestionMarkIcon] = useState(false)
+  const [isTouchCampaignIcon, setIsTouchCampaignIcon] = useState(false)
+  const [isTouchAccountCircleRoundedIcon, setIsTouchAccountCircleRoundedIcon] =
+    useState(false)
+
+  const handleClickSettingIcon = () => {
+    setIsTouchQuestionMarkIcon(false)
+    setIsTouchCampaignIcon(false)
+    setIsTouchAccountCircleRoundedIcon(false)
+
+    if (!open) {
+      toggleOpen()
+      setIsTouchSettingIcon(true)
+    } else if (isTouchSettingIcon) {
+      toggleOpen()
+      setIsTouchSettingIcon(false)
+    } else {
+      setIsTouchSettingIcon(true)
+    }
+
+    //setPlus((prevPlus) => !prevPlus)
+  }
+
+  const handleClickQuestionMarkIcon = () => {
+    setIsTouchSettingIcon(false)
+    setIsTouchCampaignIcon(false)
+    setIsTouchAccountCircleRoundedIcon(false)
+
+    if (!open) {
+      toggleOpen()
+      setIsTouchQuestionMarkIcon(true)
+    } else if (isTouchQuestionMarkIcon) {
+      toggleOpen()
+
+      setIsTouchQuestionMarkIcon(false)
+    } else {
+      setIsTouchQuestionMarkIcon(true)
+    }
+    //setPlus((prevPlus) => !prevPlus)
+  }
+
+  const handleClickCampaignIcon = () => {
+    setIsTouchSettingIcon(false)
+    setIsTouchQuestionMarkIcon(false)
+    setIsTouchAccountCircleRoundedIcon(false)
+
+    if (!open) {
+      toggleOpen()
+      setIsTouchCampaignIcon(true)
+    } else if (isTouchCampaignIcon) {
+      toggleOpen()
+      setIsTouchCampaignIcon(false)
+    } else {
+      setIsTouchCampaignIcon(true)
+    }
+
+    //setPlus((prevPlus) => !prevPlus)
+  }
+  const handleClickAccountCircleRoundedIcon = () => {
+    setIsTouchSettingIcon(false)
+    setIsTouchCampaignIcon(false)
+    setIsTouchQuestionMarkIcon(false)
+
+    if (!open) {
+      toggleOpen()
+      setIsTouchAccountCircleRoundedIcon(true)
+    } else if (isTouchAccountCircleRoundedIcon) {
+      toggleOpen()
+      setIsTouchAccountCircleRoundedIcon(false)
+    } else {
+      setIsTouchAccountCircleRoundedIcon(true)
+    }
+
+    //setPlus((prevPlus) => !prevPlus)
+  }
+
   return (
     <>
       <CssBaseline />
@@ -141,39 +221,65 @@ const Header = () => {
             >
               <Box sx={{ display: 'contents' }}>
                 <Button
+                  onClick={handleClickSettingIcon}
                   sx={{
                     padding: '19px',
                     '&:hover': { backgroundColor: '#676f73' },
+                    ...(isTouchSettingIcon
+                      ? { backgroundColor: 'white', color: 'black' }
+                      : ''),
                   }}
                 >
-                  <SettingsIcon style={{ color: 'white' }} />
+                  <SettingsIcon
+                    style={{ color: isTouchSettingIcon ? 'black' : 'white' }}
+                  />
                 </Button>
                 <Button
+                  onClick={handleClickQuestionMarkIcon}
                   sx={{
                     padding: '19px',
                     '&:hover': { backgroundColor: '#676f73' },
+                    backgroundColor: isTouchQuestionMarkIcon ? 'white' : '',
                   }}
                 >
-                  <QuestionMarkIcon style={{ color: 'white' }} />
+                  <QuestionMarkIcon
+                    style={{
+                      color: isTouchQuestionMarkIcon ? 'black' : 'white',
+                    }}
+                  />
                 </Button>
 
                 <Button
+                  onClick={handleClickCampaignIcon}
                   sx={{
                     padding: '19px',
                     '&:hover': { backgroundColor: '#676f73' },
+                    backgroundColor: isTouchCampaignIcon ? 'white' : '',
                   }}
                 >
-                  <CampaignIcon style={{ color: 'white' }} />
+                  <CampaignIcon
+                    style={{ color: isTouchCampaignIcon ? 'black' : 'white' }}
+                  />
                 </Button>
 
                 <Button
+                  onClick={handleClickAccountCircleRoundedIcon}
                   className='HeaderLastButton'
                   sx={{
                     padding: '19px',
-                    '&:hover': { backgroundColor: 'className' },
+                    '&:hover': { backgroundColor: '#676f73' },
+                    backgroundColor: isTouchAccountCircleRoundedIcon
+                      ? 'white'
+                      : '',
                   }}
                 >
-                  <AccountCircleRoundedIcon style={{ color: 'white' }} />
+                  <AccountCircleRoundedIcon
+                    style={{
+                      color: isTouchAccountCircleRoundedIcon
+                        ? 'black'
+                        : 'white',
+                    }}
+                  />
                 </Button>
               </Box>
             </Grid>

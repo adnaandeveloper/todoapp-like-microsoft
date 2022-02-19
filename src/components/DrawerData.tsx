@@ -9,7 +9,7 @@ import {
   Typography,
   Button,
 } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import MenuIcon from '@mui/icons-material/Menu'
 import WbSunnyIcon from '@mui/icons-material/WbSunny'
 
@@ -19,7 +19,8 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline'
 import EmojiFlagsIcon from '@mui/icons-material/EmojiFlags'
 import HomeIcon from '@mui/icons-material/Home'
 import useCustomToggle from '../myToggleStore'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
 import MailOutlineIcon from '@mui/icons-material/MailOutline'
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday'
 import PeopleIcon from '@mui/icons-material/People'
@@ -30,19 +31,46 @@ import { styled, ThemeProvider, createTheme } from '@mui/material/styles'
 import { Container } from '@mui/material'
 
 const DrawerData = () => {
+  const navigate = useNavigate()
   const { toggleToTrue } = useCustomToggle()
+
+  const [selectedIndex, setSelectedIndex] = useState(1)
+
+  const handleListItemClick = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    index: number
+  ) => {
+    setSelectedIndex(index)
+  }
+
+  const handleClick = (ad: string) => {
+    navigate(ad)
+  }
   return (
     <Grid container style={{ width: 350, height: `100%` }}>
       <Grid item xs={12}>
         <List sx={{ justifyContent: 'space-between' }}>
-          <ListItem disablePadding>
+          <ListItem disablePadding onClick={toggleToTrue}>
             <ListItemButton>
               <ListItemIcon>
                 <MenuIcon onClick={toggleToTrue} style={{ color: '#a2a2a4' }} />
               </ListItemIcon>
             </ListItemButton>
           </ListItem>
-          <ListItemButton>
+          <ListItemButton
+            selected={selectedIndex === 0}
+            onClick={(event) => {
+              handleListItemClick(event, 0)
+              handleClick('/')
+            }}
+            sx={{
+              '&.Mui-selected': {
+                backgroundColor: '#ededed',
+              },
+            }}
+          >
+            <Link to='/'></Link>
+
             <ListItemIcon>
               <WbSunnyOutlinedIcon sx={{ color: '#767678', fontSize: 24 }} />
             </ListItemIcon>
@@ -54,19 +82,44 @@ const DrawerData = () => {
             </Link>
           </ListItemButton>
 
-          <ListItemButton>
+          <ListItemButton
+            selected={selectedIndex === 1}
+            onClick={(event) => {
+              handleListItemClick(event, 0)
+              handleClick('Vigtigt')
+            }}
+            sx={{
+              '&.Mui-selected': {
+                backgroundColor: '#ededed',
+              },
+            }}
+          >
             <ListItemIcon>
               <StarBorderIcon sx={{ color: '#767678', fontSize: 24 }} />
             </ListItemIcon>
             <Link to='Vigtigt' style={{ textDecoration: 'none' }}>
               <ListItemText
                 primary='Vigtigt'
-                sx={{ color: '#34373d', fontSize: '1.4rem' }}
+                sx={{
+                  color: '#34373d',
+                  fontSize: '1.4rem',
+                }}
               />
             </Link>
           </ListItemButton>
 
-          <ListItemButton>
+          <ListItemButton
+            selected={selectedIndex === 2}
+            onClick={(event) => {
+              handleListItemClick(event, 2)
+              handleClick('Planlagt')
+            }}
+            sx={{
+              '&.Mui-selected': {
+                backgroundColor: '#ededed',
+              },
+            }}
+          >
             <ListItemIcon>
               <DateRangeIcon sx={{ color: '#767678', fontSize: 24 }} />
             </ListItemIcon>
@@ -78,7 +131,18 @@ const DrawerData = () => {
             </Link>
           </ListItemButton>
 
-          <ListItemButton>
+          <ListItemButton
+            selected={selectedIndex === 3}
+            onClick={(event) => {
+              handleListItemClick(event, 3)
+              handleClick('Tildelt Mig')
+            }}
+            sx={{
+              '&.Mui-selected': {
+                backgroundColor: '#ededed',
+              },
+            }}
+          >
             <ListItemIcon>
               <PersonOutlineIcon sx={{ color: ' #767678', fontSize: 24 }} />
             </ListItemIcon>
@@ -90,7 +154,18 @@ const DrawerData = () => {
             </Link>
           </ListItemButton>
 
-          <ListItemButton>
+          <ListItemButton
+            selected={selectedIndex === 4}
+            onClick={(event) => {
+              handleListItemClick(event, 4)
+              handleClick('Mail markeret Med Flag')
+            }}
+            sx={{
+              '&.Mui-selected': {
+                backgroundColor: '#ededed',
+              },
+            }}
+          >
             <ListItemIcon>
               <EmojiFlagsIcon sx={{ color: ' #5b6be6', fontSize: 24 }} />
             </ListItemIcon>
@@ -105,7 +180,18 @@ const DrawerData = () => {
             </Link>
           </ListItemButton>
 
-          <ListItemButton>
+          <ListItemButton
+            selected={selectedIndex === 5}
+            onClick={(event) => {
+              handleListItemClick(event, 5)
+              handleClick('/')
+            }}
+            sx={{
+              '&.Mui-selected': {
+                backgroundColor: '#ededed',
+              },
+            }}
+          >
             <ListItemIcon>
               <HomeIcon sx={{ color: ' #5b6be6', fontSize: 24 }} />
             </ListItemIcon>

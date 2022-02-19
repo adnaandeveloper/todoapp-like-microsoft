@@ -3,16 +3,22 @@ import create from 'zustand'
 
 type CustomToggle = {
   isFalse: boolean
-  isNotFalse: boolean
+  open: boolean
+  openTodoDrawer: boolean
+  toggleOpenTodoDrawer: () => void
   toggleToTrue: () => void
-  toggleToFalse: () => void
+  toggleOpen: () => void
 }
 
 const useCustomToggle = create<CustomToggle>((set) => ({
   isFalse: false,
-  isNotFalse: true,
+  open: false,
+  openTodoDrawer: false,
+
   toggleToTrue: () => set((state) => ({ isFalse: !state.isFalse })),
-  toggleToFalse: () => set((state) => ({ isNotFalse: !state.isNotFalse })),
+  toggleOpen: () => set((state) => ({ open: !state.open })),
+  toggleOpenTodoDrawer: () =>
+    set((state) => ({ openTodoDrawer: !state.openTodoDrawer })),
 }))
 
 export default useCustomToggle

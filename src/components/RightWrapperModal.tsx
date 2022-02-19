@@ -13,43 +13,30 @@ import AttachFileIcon from '@mui/icons-material/AttachFile'
 import CheckIcon from '@mui/icons-material/Check'
 import Header from './Header'
 
-const WrapperModal = (props: any) => {
-  const { open, isFalse, toggleOpen, toggleToTrue, openTodoDrawer } =
-    useCustomToggle()
-  const [openn, setOpen] = useState(false)
-
-  const handleClick = (event: MouseEvent<HTMLDivElement>): void => {
-    event.preventDefault()
-    setOpen((prevopen) => !prevopen)
-    toggleOpen()
-  }
+const RightWrapperModal = (props: any) => {
+  const { open, isFalse, toggleOpen, toggleToTrue } = useCustomToggle()
+  const [heigh, setHeight] = useState()
 
   return (
     <>
-      <Header />
-      <div
-        style={{
-          marginLeft: isFalse ? '26%' : '3px',
-          marginRight: openTodoDrawer ? '20%' : '',
-        }}
-      >
-        {props.children}
-      </div>
+      <div>{props.children}</div>
       <Drawer
-        open={isFalse}
+        anchor={'right'}
+        open={open}
         sx={{
           '& .MuiDrawer-paper': {
             backgroundColor: '#f4f4f4;',
-            marginTop: '60px',
+            marginTop: '63px',
             height: `calc(100vh - 64px)`,
+            width: '20%',
           },
         }}
         variant='persistent'
       >
-        <DrawerData />
+        <h1>Hello </h1>
       </Drawer>
     </>
   )
 }
 
-export default WrapperModal
+export default RightWrapperModal

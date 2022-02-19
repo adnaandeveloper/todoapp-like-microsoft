@@ -14,7 +14,7 @@ import { red } from '@mui/material/colors'
 import { useLocation } from 'react-router-dom'
 
 const DynamicHeading = () => {
-  const { isNotFalse, isFalse, toggleToTrue, toggleToFalse } = useCustomToggle()
+  const { open, isFalse, toggleToTrue, toggleOpen } = useCustomToggle()
   const CurrentLocation = useLocation()
 
   return (
