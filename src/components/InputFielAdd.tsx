@@ -1,14 +1,7 @@
-import {
-  Button,
-  Grid,
-  makeStyles,
-  TextField,
-  Typography,
-  IconButton,
-} from '@mui/material'
+import { Button, Grid, Typography, IconButton, TextField } from '@mui/material'
 import { Box } from '@mui/system'
-import React, { useEffect, useRef, useState } from 'react'
-import { useStore } from '../store'
+import React, { useState } from 'react'
+import { useStore } from '../Store/store'
 import AddIcon from '@mui/icons-material/Add'
 import Radio from '@mui/material/Radio'
 import DateRangeTwoToneIcon from '@mui/icons-material/DateRangeTwoTone'
@@ -17,13 +10,17 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday'
 
 import '../App.css'
 
-const InputFielAdd = () => {
-  const { addTodo, removeTodo, toggleCompletedState, todos } = useStore()
+interface ICustomComponentProps {
+  text: string
+  addToList: (description: string) => void
+}
+
+const InputFielAdd = (props: ICustomComponentProps) => {
+  const { text, addToList } = props
+  const { addTodo } = useStore()
   const [todoText, setTodoText] = useState('')
 
   const [plus, setPlus] = useState(false)
-
-  const textRef = useRef()
 
   const handleChange = (e: any) => {
     e.preventDefault()
@@ -35,7 +32,8 @@ const InputFielAdd = () => {
 
       console.log('handleChange is called !')
       if (todoText) {
-        addTodo(todoText)
+        addToList(todoText)
+        // addTodo(todoText)
       }
 
       setTodoText('')
@@ -56,7 +54,7 @@ const InputFielAdd = () => {
 
   return (
     <div>
-      <div style={{ marginRight: 2, marginLeft: -20 }}>
+      <div style={{}}>
         {plus ? (
           <Box
             onClick={() => setPlus(true)}
@@ -96,7 +94,7 @@ const InputFielAdd = () => {
                   display: 'grid',
                   autoFocus: 'autoFocus',
                 }}
-                placeholder='Tilføj en opgave'
+                placeholder={text}
                 color='primary'
                 focused
                 onKeyDown={keyPress}
@@ -194,7 +192,7 @@ const InputFielAdd = () => {
                 sx={{ color: '#8a95a1', width: '24px' }}
                 onClick={() => setPlus(true)}
               />
-              Tilføj en opgave
+              {props.text}
             </Typography>
           </Box>
         )}

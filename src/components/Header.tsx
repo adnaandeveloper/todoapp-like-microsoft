@@ -1,37 +1,24 @@
 import React, { useState } from 'react'
 import ViewComfyIcon from '@mui/icons-material/ViewComfy'
 import '../App.css'
-
 import SettingsIcon from '@mui/icons-material/Settings'
 import {
   AppBar,
   Button,
   CssBaseline,
   Grid,
-  InputAdornment,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
   Toolbar,
   Typography,
 } from '@mui/material'
-import CustomizedInputBase from './InputFiel'
+
 import InputBase from '@mui/material/InputBase'
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark'
 import CampaignIcon from '@mui/icons-material/Campaign'
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded'
 import SearchIcon from '@mui/icons-material/Search'
-import { maxWidth, width } from '@mui/system'
-
 import { styled, alpha } from '@mui/material/styles'
-
 import Box from '@mui/material/Box'
-
-import IconButton from '@mui/material/IconButton'
-
-import MenuIcon from '@mui/icons-material/Menu'
-import useCustomToggle from '../myToggleStore'
+import useCustomToggle from '../Store/myToggleStore'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -160,10 +147,14 @@ const Header = () => {
     <>
       <CssBaseline />
       <AppBar
+        elevation={0}
         position='relative'
         style={{
           margin: 0,
           backgroundColor: '#0078d7',
+          borderWidth: 0,
+          minHeight: 59,
+          height: '59px',
         }}
       >
         <Toolbar>

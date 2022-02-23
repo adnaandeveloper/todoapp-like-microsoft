@@ -1,9 +1,9 @@
 import React from 'react'
 import DynamicHeading from '../components/DynamicHeading'
-import Item from '../components/Item'
+import MyDayItem from '../items/MyDayItem'
 import RightComponent from '../components/RightComponent'
-import TestComponenet from '../components/TestComponenet'
-import WrapperModal from '../components/WrapperModal'
+
+import WrapperModal from '../components/Drawers/WrapperModal'
 
 const HomeScreen = () => {
   return (
@@ -12,7 +12,7 @@ const HomeScreen = () => {
         <RightComponent />
       </div>
 
-      <Item />
+      <MyDayItem />
     </>
   )
 }

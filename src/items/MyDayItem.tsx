@@ -1,18 +1,15 @@
+import TodoItem from '../components/TodoItem'
 import { Container } from '@mui/material'
 
 import React from 'react'
 import { useStore } from '../Store/store'
-
 import InputFielAdd from '../components/InputFielAdd'
-import LessonItem from '../items/LessonItem'
-import { useLesson } from '../Store/LessonStore'
 import useCustomToggle from '../Store/myToggleStore'
 
-const VigtigtScreen = () => {
+const MyDayItem = () => {
   console.log('plus im from item component yees im her can you see mee now?')
-  const { todos } = useStore()
+  const { addTodo, todos } = useStore()
   const { open, isFalse, toggleOpen } = useCustomToggle()
-  const { addLesson } = useLesson()
 
   const toggleRightDrawerToTrue = () => {
     if (open) {
@@ -36,7 +33,7 @@ const VigtigtScreen = () => {
                 marginLeft: '-15px',
               }}
             >
-              <InputFielAdd text='Tilføj en opgave' addToList={addLesson} />
+              <InputFielAdd text='Tilføj en opgave' addToList={addTodo} />
             </div>
 
             <div
@@ -49,7 +46,7 @@ const VigtigtScreen = () => {
                   'repeating-linear-gradient(#e5e5e5, #e5e5e5 1px, #ffffff 1px,  #ffffff 50px )',
               }}
             >
-              <div>{todos.length ? <LessonItem /> : ''}</div>
+              <div>{todos.length ? <TodoItem /> : ''}</div>
             </div>
           </div>
         </Container>
@@ -60,7 +57,7 @@ const VigtigtScreen = () => {
           }}
         >
           <div style={{ marginBottom: 0 }}>
-            <InputFielAdd text='Tilføj en opgave' addToList={addLesson} />
+            <InputFielAdd text='Tilføj en opgave' addToList={addTodo} />
           </div>
 
           <div
@@ -73,7 +70,7 @@ const VigtigtScreen = () => {
                 'repeating-linear-gradient(#e5e5e5, #e5e5e5 1px, #ffffff 1px,  #ffffff 50px )',
             }}
           >
-            <div>{todos.length ? <LessonItem /> : ''}</div>
+            <div>{todos.length ? <TodoItem /> : ''}</div>
           </div>
         </div>
       )}
@@ -81,4 +78,4 @@ const VigtigtScreen = () => {
   )
 }
 
-export default VigtigtScreen
+export default MyDayItem

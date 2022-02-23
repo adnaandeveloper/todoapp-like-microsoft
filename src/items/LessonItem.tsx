@@ -5,13 +5,14 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import IconButton from '@mui/material/IconButton'
-import { useStore } from '../Store/store'
 import Radio from '@mui/material/Radio'
 import StarOutlineIcon from '@mui/icons-material/StarOutline'
+import { useLesson } from '../Store/LessonStore'
 import useCustomToggle from '../Store/myToggleStore'
 
-export default function TodoItem() {
-  const { todos } = useStore()
+export default function LessonItem() {
+  const { lessons } = useLesson()
+
   const { toggleOpenTodoDrawer } = useCustomToggle()
 
   return (
@@ -22,7 +23,7 @@ export default function TodoItem() {
         marginLeft: '-15px',
       }}
     >
-      {todos.map((value) => {
+      {lessons.map((value) => {
         return (
           <ListItem
             key={value.id}

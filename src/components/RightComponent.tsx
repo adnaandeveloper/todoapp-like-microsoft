@@ -1,5 +1,6 @@
-import { Button, Grid } from '@mui/material'
 import React from 'react'
+import { Button, Grid } from '@mui/material'
+
 import SwapVertIcon from '@mui/icons-material/SwapVert'
 import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined'
 
@@ -15,7 +16,11 @@ const RightComponent = () => {
         marginRight: '34px',
       }}
     >
-      <Grid item xs={12} style={{ display: 'flex', justifyContent: 'end' }}>
+      <Grid
+        item
+        xs={12}
+        style={{ display: 'flex', justifyContent: 'end', marginRight: '3%' }}
+      >
         <Button sx={{ color: '#394453', fontSize: '10px' }}>
           <SwapVertIcon /> Sortér
         </Button>

@@ -1,20 +1,14 @@
-import {
-  Button,
-  CssBaseline,
-  Grid,
-  List,
-  ListItemButton,
-  Typography,
-} from '@mui/material'
+import { Grid, List, ListItemButton, Typography } from '@mui/material'
 import React from 'react'
-import useCustomToggle from '../myToggleStore'
+
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import MenuIcon from '@mui/icons-material/Menu'
-import { red } from '@mui/material/colors'
+
 import { useLocation } from 'react-router-dom'
+import useCustomToggle from '../Store/myToggleStore'
 
 const DynamicHeading = () => {
-  const { open, isFalse, toggleToTrue, toggleOpen } = useCustomToggle()
+  const { isFalse, toggleToTrue } = useCustomToggle()
   const CurrentLocation = useLocation()
 
   return (

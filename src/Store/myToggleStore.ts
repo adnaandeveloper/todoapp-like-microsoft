@@ -1,6 +1,4 @@
-import { ICustomToggle } from './modal/CustomToggle'
 import create from 'zustand'
-
 type CustomToggle = {
   isFalse: boolean
   open: boolean
