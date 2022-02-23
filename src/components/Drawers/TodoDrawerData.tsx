@@ -21,8 +21,22 @@ import StarIcon from '@mui/icons-material/Star'
 import DeleteIcon from '@mui/icons-material/Delete'
 import ExitToAppIcon from '@mui/icons-material/ExitToApp'
 import { Box } from '@mui/system'
+import { useLesson } from '../../Store/LessonStore'
+import { usePlan } from '../../Store/PlanStore'
+import { useStore } from '../../Store/store'
 
-export default function TodoDrawerData() {
+const { forwardRef, useRef, useImperativeHandle } = React
+
+const TodoDrawerData = forwardRef((props, ref) => {
+  // The component instance will be extended
+  // with whatever you return from the callback passed
+  // as the second argument
+  useImperativeHandle(ref, () => ({
+    getAlert() {
+      console.log('it works now alxamdu kullahaa lillaah')
+    },
+  }))
+
   return (
     <Box>
       <List sx={{ bgcolor: 'background.paper', margin: '11px' }}>
@@ -231,4 +245,8 @@ export default function TodoDrawerData() {
       </Grid>
     </Box>
   )
-}
+})
+
+TodoDrawerData.displayName = 'TodoDrawerData'
+
+export default TodoDrawerData

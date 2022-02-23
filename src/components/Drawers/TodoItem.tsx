@@ -5,10 +5,10 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import IconButton from '@mui/material/IconButton'
-import { useStore } from '../Store/store'
+import { useStore } from '../../Store/store'
 import Radio from '@mui/material/Radio'
 import StarOutlineIcon from '@mui/icons-material/StarOutline'
-import useCustomToggle from '../Store/myToggleStore'
+import useCustomToggle from '../../Store/myToggleStore'
 
 export default function TodoItem() {
   const { todos } = useStore()

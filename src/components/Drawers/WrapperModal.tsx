@@ -26,7 +26,7 @@ const WrapperModal = (props: any) => {
         sx={{
           '& .MuiDrawer-paper': {
             backgroundColor: '#f4f4f4;',
-            marginTop: '60px',
+            marginTop: '63px',
             height: `calc(100vh - 64px)`,
             borderWidth: 0,
           },

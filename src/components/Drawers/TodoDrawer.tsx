@@ -1,8 +1,8 @@
 import { Drawer } from '@mui/material'
 import React from 'react'
 
-import TodoDrawerData from './Drawers/TodoDrawerData'
-import useCustomToggle from '../Store/myToggleStore'
+import TodoDrawerData from './TodoDrawerData'
+import useCustomToggle from '../../Store/myToggleStore'
 
 const TodoDrawer = (props: any) => {
   const { openTodoDrawer } = useCustomToggle()

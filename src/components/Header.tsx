@@ -154,7 +154,7 @@ const Header = () => {
           backgroundColor: '#0078d7',
           borderWidth: 0,
           minHeight: 59,
-          height: '59px',
+          height: '63px',
         }}
       >
         <Toolbar>

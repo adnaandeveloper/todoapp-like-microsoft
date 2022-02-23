@@ -15,9 +15,9 @@ const RightWrapperModal = (props: Props) => {
         sx={{
           '& .MuiDrawer-paper': {
             backgroundColor: '#f4f4f4;',
-            marginTop: '63px',
-            height: `calc(100vh - 64px)`,
-            width: '20%',
+            marginTop: '65px',
+            height: `calc(100vh - 65px)`,
+            width: '28%',
           },
         }}
         variant='persistent'
